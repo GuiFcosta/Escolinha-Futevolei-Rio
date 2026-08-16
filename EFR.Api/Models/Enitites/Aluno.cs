@@ -11,7 +11,8 @@ namespace EFR.Api.Models.Enitites
         public string Nome { get; set; } = string.Empty;
         
         [Required]
-        public string Telefone { get; set; } = string.Empty;
+        [MaxLength(15)]
+        public string WhatsApp { get; set; } = string.Empty;
         
         [Required]
         public string Status { get; set; } = string.Empty;
