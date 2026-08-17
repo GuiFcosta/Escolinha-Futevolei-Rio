@@ -1,6 +1,9 @@
+using EFR.Api.Configuration;
+
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddOpenApi();
+builder.Services.AddControllers();
+builder.Services.AddOpenApiConfig();
 
 var app = builder.Build();
 
