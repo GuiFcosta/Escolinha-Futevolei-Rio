@@ -1,28 +1,21 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace EFR.Api.Models.Enitites;
+namespace EFR.Api.Models.Dto.Update;
 
-public class Plano
+public class PlanoUpdateDto
 {
-    [Key]
-    public int PlanoId { get; set; } 
-
     [Required]
     [MaxLength(50)]
     public string Nome { get; set; } = string.Empty;
-        
+
     [Required]
     public decimal Valor { get; set; }
-        
+
     [Required]
     public int Duracao { get; set; }
-        
-    [Required]
-    public bool Ativo { get; set; } = false;
-        
+
+    public bool Ativo { get; set; }
+
     [Required]
     public int EscolinhaId { get; set; }
-        
-    public Escolinha? Escolinha { get; set; }
 }
-

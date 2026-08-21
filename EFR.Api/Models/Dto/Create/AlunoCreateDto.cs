@@ -1,37 +1,28 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace EFR.Api.Models.Enitites;
+namespace EFR.Api.Models.Dto.Create;
 
-public class Aluno
+public class AlunoCreateDto
 {
-    [Key]
-    public int AlunoId { get; set; }
-    
     [Required]
     public string Nome { get; set; } = string.Empty;
-    
+
     [Required]
     [MaxLength(15)]
     public string WhatsApp { get; set; } = string.Empty;
-    
+
     [Required]
-    public string Status { get; set; } = string.Empty;
-    
+    public string Status { get; set; } = "Ativo";
+
     [Required]
     public string Responsavel { get; set; } = string.Empty;
-    
+
     [Required]
-    public string DataNascimento { get; set; } = string.Format("dd/MM/yyyy");  
-    
+    public string DataNascimento { get; set; } = string.Empty;
+
     [Required]
     public int EscolinhaId { get; set; }
-    
-    public Escolinha? Escolinha { get; set; }
-    
+
     [Required]
     public int PlanoId { get; set; }
-    
-    public Plano? Plano { get; set; }
 }
-
-

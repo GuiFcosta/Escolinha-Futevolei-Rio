@@ -9,17 +9,17 @@ namespace EFR.Api.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class EscolinhaController : ControllerBase
+public class UtilizadorController : ControllerBase
 {
-    private readonly IEscolinhaRepository _repository;
+    private readonly IUtilizadorRepository _repository;
 
-    public EscolinhaController(IEscolinhaRepository repository)
+    public UtilizadorController(IUtilizadorRepository repository)
     {
         _repository = repository;
     }
 
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<EscolinhaReadDto>>> GetAll()
+    public async Task<ActionResult<IEnumerable<UtilizadorReadDto>>> GetAll()
     {
         var entities = await _repository.GetAllAsync();
         var dtos = entities.Select(e => e.ToDto());
@@ -27,7 +27,7 @@ public class EscolinhaController : ControllerBase
     }
 
     [HttpGet("{id:int}")]
-    public async Task<ActionResult<EscolinhaReadDto>> GetById(int id)
+    public async Task<ActionResult<UtilizadorReadDto>> GetById(int id)
     {
         var entity = await _repository.GetByIdAsync(id);
         if (entity == null)
@@ -38,15 +38,15 @@ public class EscolinhaController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<ActionResult<EscolinhaReadDto>> Create([FromBody] EscolinhaCreateDto dto)
+    public async Task<ActionResult<UtilizadorReadDto>> Create([FromBody] UtilizadorCreateDto dto)
     {
         var entity = dto.ToEntity();
         var createdEntity = await _repository.AddAsync(entity);
-        return CreatedAtAction(nameof(GetById), new { id = createdEntity.EscolinhaId }, createdEntity.ToDto());
+        return CreatedAtAction(nameof(GetById), new { id = createdEntity.UtilizadorId }, createdEntity.ToDto());
     }
 
     [HttpPut("{id:int}")]
-    public async Task<IActionResult> Update(int id, [FromBody] EscolinhaUpdateDto dto)
+    public async Task<IActionResult> Update(int id, [FromBody] UtilizadorUpdateDto dto)
     {
         var entity = await _repository.GetByIdAsync(id);
         if (entity == null)
