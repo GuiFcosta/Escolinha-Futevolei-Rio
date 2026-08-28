@@ -22,6 +22,6 @@ public class Configuracao
     public Escolinha? Escolinha { get; set; }
         
     [Required]
-    public DateTime AtualizadoEm { get; set; } = DateTime.Now;
+    public DateTime AtualizadoEm { get; set; } = DateTime.UtcNow;
 }
 

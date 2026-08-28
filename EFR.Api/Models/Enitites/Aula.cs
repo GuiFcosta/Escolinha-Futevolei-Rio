@@ -14,6 +14,7 @@ public class Aula
     public DateTime? HoraFim { get; set; } 
     
     [Required]
+    [MaxLength(50)]
     public string Local { get; set; } = string.Empty;
     
     [Required]

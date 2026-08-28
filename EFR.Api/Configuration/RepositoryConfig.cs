@@ -3,7 +3,7 @@ using EFR.Api.Repository;
 
 namespace EFR.Api.Configuration;
 
-public static class RepositoryConfiguration
+public static class RepositoryConfig
 {
     public static IServiceCollection AddRepositories(this IServiceCollection services)
     {

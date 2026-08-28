@@ -2,7 +2,7 @@ using Scalar.AspNetCore;
 
 namespace EFR.Api.Configuration;
 
-public static class ScalarConfiguration
+public static class ScalarConfig
 {
     public static WebApplication UseScalarDocumentation(this WebApplication app)
     {

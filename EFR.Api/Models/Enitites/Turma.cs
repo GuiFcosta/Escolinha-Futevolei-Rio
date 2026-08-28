@@ -22,10 +22,10 @@ public class Turma
     public string Status { get; set; } = string.Empty;
     
     [Required]
-    public DateTime CriadoEm { get; set; } = DateTime.Now;
+    public DateTime CriadoEm { get; set; } = DateTime.UtcNow;
     
     [Required]
-    public DateTime AtualizadoEm { get; set; } = DateTime.Now;
+    public DateTime AtualizadoEm { get; set; } = DateTime.UtcNow;
     
     [Required]
     public int EscolinhaId { get; set; }

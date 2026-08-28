@@ -9,19 +9,12 @@ namespace EFR.Api.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class EscolinhaController : ControllerBase
+public class EscolinhaController(IEscolinhaRepository repository) : ControllerBase
 {
-    private readonly IEscolinhaRepository _repository;
-
-    public EscolinhaController(IEscolinhaRepository repository)
-    {
-        _repository = repository;
-    }
-
     [HttpGet]
     public async Task<ActionResult<IEnumerable<EscolinhaReadDto>>> GetAll()
     {
-        var entities = await _repository.GetAllAsync();
+        var entities = await repository.GetAllAsync();
         var dtos = entities.Select(e => e.ToDto());
         return Ok(dtos);
     }
@@ -29,7 +22,7 @@ public class EscolinhaController : ControllerBase
     [HttpGet("{id:int}")]
     public async Task<ActionResult<EscolinhaReadDto>> GetById(int id)
     {
-        var entity = await _repository.GetByIdAsync(id);
+        var entity = await repository.GetByIdAsync(id);
         if (entity == null)
         {
             return NotFound();
@@ -41,28 +34,28 @@ public class EscolinhaController : ControllerBase
     public async Task<ActionResult<EscolinhaReadDto>> Create([FromBody] EscolinhaCreateDto dto)
     {
         var entity = dto.ToEntity();
-        var createdEntity = await _repository.AddAsync(entity);
+        var createdEntity = await repository.AddAsync(entity);
         return CreatedAtAction(nameof(GetById), new { id = createdEntity.EscolinhaId }, createdEntity.ToDto());
     }
 
     [HttpPut("{id:int}")]
     public async Task<IActionResult> Update(int id, [FromBody] EscolinhaUpdateDto dto)
     {
-        var entity = await _repository.GetByIdAsync(id);
+        var entity = await repository.GetByIdAsync(id);
         if (entity == null)
         {
             return NotFound();
         }
 
         entity.UpdateEntity(dto);
-        await _repository.UpdateAsync(entity);
+        await repository.UpdateAsync(entity);
         return NoContent();
     }
 
     [HttpDelete("{id:int}")]
     public async Task<IActionResult> Delete(int id)
     {
-        var deleted = await _repository.DeleteAsync(id);
+        var deleted = await repository.DeleteAsync(id);
         if (!deleted)
         {
             return NotFound();

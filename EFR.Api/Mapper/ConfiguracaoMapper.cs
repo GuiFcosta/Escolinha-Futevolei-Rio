@@ -28,7 +28,7 @@ public static class ConfiguracaoMapper
             LembreteChamadas = dto.LembreteChamadas,
             TempoChuvaHoras = dto.TempoChuvaHoras,
             EscolinhaId = dto.EscolinhaId,
-            AtualizadoEm = DateTime.Now
+            AtualizadoEm = DateTime.UtcNow
         };
     }
 
@@ -38,6 +38,6 @@ public static class ConfiguracaoMapper
         entity.LembreteChamadas = dto.LembreteChamadas;
         entity.TempoChuvaHoras = dto.TempoChuvaHoras;
         entity.EscolinhaId = dto.EscolinhaId;
-        entity.AtualizadoEm = DateTime.Now;
+        entity.AtualizadoEm = DateTime.UtcNow;
     }
 }

@@ -34,8 +34,8 @@ public static class TurmaMapper
             Nivel = dto.Nivel,
             Status = dto.Status,
             EscolinhaId = dto.EscolinhaId,
-            CriadoEm = DateTime.Now,
-            AtualizadoEm = DateTime.Now
+            CriadoEm = DateTime.UtcNow,
+            AtualizadoEm = DateTime.UtcNow
         };
     }
 
@@ -46,6 +46,6 @@ public static class TurmaMapper
         entity.Nivel = dto.Nivel;
         entity.Status = dto.Status;
         entity.EscolinhaId = dto.EscolinhaId;
-        entity.AtualizadoEm = DateTime.Now;
+        entity.AtualizadoEm = DateTime.UtcNow;
     }
 }

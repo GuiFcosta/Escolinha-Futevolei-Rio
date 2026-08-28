@@ -38,8 +38,8 @@ public static class UtilizadorMapper
             Ativo = dto.Ativo,
             BiometriaAtivada = dto.BiometriaAtivada,
             EscolinhaId = dto.EscolinhaId,
-            CriadoEm = DateTime.Now,
-            AtualizadoEm = DateTime.Now
+            CriadoEm = DateTime.UtcNow,
+            AtualizadoEm = DateTime.UtcNow
         };
     }
 
@@ -53,6 +53,6 @@ public static class UtilizadorMapper
         entity.Ativo = dto.Ativo;
         entity.BiometriaAtivada = dto.BiometriaAtivada;
         entity.EscolinhaId = dto.EscolinhaId;
-        entity.AtualizadoEm = DateTime.Now;
+        entity.AtualizadoEm = DateTime.UtcNow;
     }
 }

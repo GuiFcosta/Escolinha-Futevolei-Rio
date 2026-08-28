@@ -5,13 +5,12 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EFR.Api.Repository;
 
-public class TurmaRepository : BaseRepository<Turma>, ITurmaRepository
+public class TurmaRepository(AppDbContext context) : BaseRepository<Turma>(context), ITurmaRepository
 {
-    public TurmaRepository(AppDbContext context) : base(context) { }
-
     public override async Task<IEnumerable<Turma>> GetAllAsync()
     {
-        return await _dbSet
+        return await Context.Turmas
+            .AsNoTracking()
             .Include(t => t.Escolinha)
             .Include(t => t.Professores)
             .Include(t => t.Alunos)
@@ -21,7 +20,8 @@ public class TurmaRepository : BaseRepository<Turma>, ITurmaRepository
 
     public override async Task<Turma?> GetByIdAsync(int id)
     {
-        return await _dbSet
+        return await Context.Turmas
+            .AsNoTracking()
             .Include(t => t.Escolinha)
             .Include(t => t.Professores)
             .Include(t => t.Alunos)

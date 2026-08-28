@@ -11,7 +11,7 @@ public class EscolinhaReadDto
     public string CriadoEm { get; set; } = string.Empty;
     public string AtualizadoEm { get; set; } = string.Empty;
     public int ConfiguracaoId { get; set; }
-    public List<int> ProfessoresId { get; set; } = [];
-    public List<int> AlunosId { get; set; } = [];
+    public Dictionary<int, string> Professores { get; set; } = [];
+    public Dictionary<int, string> Alunos { get; set; } = [];
     public List<int> TurmasId { get; set; } = [];
 }

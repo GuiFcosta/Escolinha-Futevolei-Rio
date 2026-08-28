@@ -5,13 +5,12 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EFR.Api.Repository;
 
-public class EscolinhaRepository : BaseRepository<Escolinha>, IEscolinhaRepository
+public class EscolinhaRepository(AppDbContext context) : BaseRepository<Escolinha>(context), IEscolinhaRepository
 {
-    public EscolinhaRepository(AppDbContext context) : base(context) { }
-
     public override async Task<IEnumerable<Escolinha>> GetAllAsync()
     {
-        return await _dbSet
+        return await Context.Escolinhas
+            .AsNoTracking()
             .Include(e => e.Professores)
             .Include(e => e.Alunos)
             .Include(e => e.Turmas)
@@ -20,7 +19,8 @@ public class EscolinhaRepository : BaseRepository<Escolinha>, IEscolinhaReposito
 
     public override async Task<Escolinha?> GetByIdAsync(int id)
     {
-        return await _dbSet
+        return await Context.Escolinhas
+            .AsNoTracking()
             .Include(e => e.Professores)
             .Include(e => e.Alunos)
             .Include(e => e.Turmas)

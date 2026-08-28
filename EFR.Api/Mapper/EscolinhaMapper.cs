@@ -20,8 +20,8 @@ public static class EscolinhaMapper
             CriadoEm = entity.CriadoEm.ToString("dd/MM/yyyy HH:mm:ss"),
             AtualizadoEm = entity.AtualizadoEm.ToString("dd/MM/yyyy HH:mm:ss"),
             ConfiguracaoId = entity.Configuracao?.ConfiguracaoId ?? 0,
-            ProfessoresId = entity.Professores?.Where(p => p != null).Select(p => p!.UtilizadorId).ToList() ?? [],
-            AlunosId = entity.Alunos?.Where(a => a != null).Select(a => a!.AlunoId).ToList() ?? [],
+            Professores = entity.Professores?.Where(p => p != null).ToDictionary(p => p!.UtilizadorId, p => p!.Nome ?? string.Empty) ?? new Dictionary<int, string>(),
+            Alunos = entity.Alunos?.Where(a => a != null).ToDictionary(a => a!.AlunoId, a => a!.Nome ?? string.Empty) ?? new Dictionary<int, string>(),
             TurmasId = entity.Turmas?.Where(t => t != null).Select(t => t!.TurmaId).ToList() ?? []
         };
     }
@@ -35,9 +35,8 @@ public static class EscolinhaMapper
             ChavePix = dto.ChavePix,
             TipoChavePix = dto.TipoChavePix,
             WhatsApp = dto.WhatsApp,
-            ConfiguracaoId = dto.ConfiguracaoId,
-            CriadoEm = DateTime.Now,
-            AtualizadoEm = DateTime.Now
+            CriadoEm = DateTime.UtcNow,
+            AtualizadoEm = DateTime.UtcNow
         };
     }
 
@@ -48,7 +47,6 @@ public static class EscolinhaMapper
         entity.ChavePix = dto.ChavePix;
         entity.TipoChavePix = dto.TipoChavePix;
         entity.WhatsApp = dto.WhatsApp;
-        entity.ConfiguracaoId = dto.ConfiguracaoId;
-        entity.AtualizadoEm = DateTime.Now;
+        entity.AtualizadoEm = DateTime.UtcNow;
     }
 }

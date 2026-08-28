@@ -5,20 +5,20 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EFR.Api.Repository;
 
-public class PlanoRepository : BaseRepository<Plano>, IPlanoRepository
+public class PlanoRepository(AppDbContext context) : BaseRepository<Plano>(context), IPlanoRepository
 {
-    public PlanoRepository(AppDbContext context) : base(context) { }
-
     public override async Task<IEnumerable<Plano>> GetAllAsync()
     {
-        return await _dbSet
+        return await Context.Planos
+            .AsNoTracking()
             .Include(p => p.Escolinha)
             .ToListAsync();
     }
 
     public override async Task<Plano?> GetByIdAsync(int id)
     {
-        return await _dbSet
+        return await Context.Planos
+            .AsNoTracking()
             .Include(p => p.Escolinha)
             .FirstOrDefaultAsync(p => p.PlanoId == id);
     }
