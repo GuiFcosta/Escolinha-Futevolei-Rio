@@ -1,6 +1,0 @@
-@EFR.Api_HostAddress = http://localhost:5168
-
-GET {{EFR.Api_HostAddress}}/
-Accept: application/json
-
-###

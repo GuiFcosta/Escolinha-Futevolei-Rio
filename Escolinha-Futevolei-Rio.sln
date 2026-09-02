@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFR.Api", "EFR.Api\EFR.Api.csproj", "{603C82DC-D7F9-4907-9445-0F53B8CB8CE6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFR.Api", "src\Backend\EFR.Api\EFR.Api.csproj", "{012B5AE6-FFF2-4AA2-91C2-51EB29CC5500}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -8,9 +8,9 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{603C82DC-D7F9-4907-9445-0F53B8CB8CE6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{603C82DC-D7F9-4907-9445-0F53B8CB8CE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{603C82DC-D7F9-4907-9445-0F53B8CB8CE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{603C82DC-D7F9-4907-9445-0F53B8CB8CE6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{012B5AE6-FFF2-4AA2-91C2-51EB29CC5500}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{012B5AE6-FFF2-4AA2-91C2-51EB29CC5500}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{012B5AE6-FFF2-4AA2-91C2-51EB29CC5500}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{012B5AE6-FFF2-4AA2-91C2-51EB29CC5500}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
